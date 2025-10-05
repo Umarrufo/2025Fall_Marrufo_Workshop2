@@ -2,11 +2,11 @@ package org.example;
 
 import java.util.Scanner;
 
-//This template is to help you know where certain code should live
-//This is to help you along if you're stuck
-public class Main {
-    public static void main(String[] args) {
-        //You'll need an array of 20 books, put it here
+public class Main
+{
+    public static void main(String[] args)
+    {
+        //20 Book Array
         Book[] books = new Book[20];
 
         books[0] = new Book(1, "9780545582889", "Harry Potter and the Sorcerer's Stone", false, "");
@@ -31,41 +31,35 @@ public class Main {
         books[19] = new Book(20, "9780064408677", "Holes", false, "");
 
 
-
-        //You'll need a scanner to take in user input. Make one.
+        //Scanner to ask for user input
         Scanner scanner = new Scanner(System.in);
 
-        //You'll need a menu. A while(true) loop will be helpful
-        while(true)
-        {
+        //Menu to show the user options
+        while (true) {
             System.out.println("Pleaser Enter you Choice");
             System.out.println("1.) Show Available Books");
             System.out.println("2.) Show Checked Out Books");
             System.out.println("3.) Exit");
             String userInput = scanner.nextLine();
 
-            //Based on what they type, make a switch case to handle it
-            //Be sure they can exit the program!
-            switch(userInput)
-            {
+            //Take in user input to show the menu options selected
+            switch (userInput) {
                 case "1":
-                    //Print array
-                    for(Book catelog : books)
-                    {
-                        if(catelog.isCheckedOut() == false)
-                        {
+                    //Print array of the books available
+                    for (Book catelog : books) {
+                        if (catelog.isCheckedOut() == false) {
                             System.out.println("ID: " + catelog.getId() + " \t " +
                                     "ISBN: " + catelog.getIsbn() + " \t " +
                                     "Tite: " + catelog.getTitle() + " \t ");
                         }
                     }
-
+                    //Ask user what they want to do next
                     System.out.println("1.) Check Out Book\n" +
                             "2.) Back");
-                    String options = scanner.nextLine();
+                    String options1 = scanner.nextLine();
 
-                    switch(options)
-                    {
+                    switch (options1) {
+                        //Ask user for details to check out
                         case "1":
                             System.out.println("What is the ID of the book you would like to check out?");
                             int idNumber = scanner.nextInt();
@@ -74,15 +68,15 @@ public class Main {
                             System.out.println("What is your name?");
                             String checkedOutTo = scanner.nextLine();
 
-                            if (books[idNumber -1 ].isCheckedOut() == false)
+                            if (books[idNumber - 1].isCheckedOut() == false)
                             {
-                                books[idNumber -1 ].checkOut(checkedOutTo);
+                                books[idNumber - 1].checkOut(checkedOutTo);
                             }
                             break;
-
+                            //Take user back to main menu
                         case "2":
                             break;
-
+                            //Tell user to re-input value if incorrect value input
                         default:
                             System.out.println("Please type 1 or 2");
                             break;
@@ -90,43 +84,49 @@ public class Main {
                     }
                     break;
                 case "2":
-                    //Show Checked out BooK
-                    for(Book catelog : books)
-                    {
-                        if(catelog.isCheckedOut() == true)
-                        {
+                    //Show checked out books
+                    for (Book catelog : books) {
+                        if (catelog.isCheckedOut() == true) {
                             System.out.println("ID: " + catelog.getId() + " \t " +
                                     "ISBN: " + catelog.getIsbn() + " \t " +
-                                    "Tite: " + catelog.getTitle() + " \t " +
+                                    "Title: " + catelog.getTitle() + " \t " +
                                     "Checked Out To: " + catelog.getCheckedOutTo());
                         }
                     }
-                    break;
+                    //Ask user what they want to do next
+                    System.out.println("1.) Check In Book\n" +
+                            "2.) Back");
+                    String options2 = scanner.nextLine();
+                    //Ask user for into to check book in
+                    switch (options2) {
+                        case "1":
+                            System.out.println("What is the ID of the book you would like to check in?");
+                            int idNumber = scanner.nextInt();
+                            scanner.nextLine();
 
-                case "3":
-                    System.exit(0);
-                    break;
+                            books[idNumber -1].checkIn();
 
-                default:
-                    System.out.println("Please type 1, 2 or 3");
-                    break;
+                            break;
+
+                        case "2":
+                            break;
+
+
+                            //Exit program based of user input
+                        case "3":
+                            System.exit(0);
+                            break;
+                            //Tell user to re-input value if incorrect value input
+                        default:
+                            System.out.println("Please type 1, 2 or 3");
+                            break;
+
+                    }
 
             }
 
         }
 
 
-
-        //Use a for loop and sout to print all the book titles
-        //remember to use your Book class getters
-        //Use if statements to filter out books that are checkedin/out
-        //as need be
-
-        //You will call the checkIn() and checkOut() methods
-        //If the user wants to check in or out
-        //Remember if they check out you must ask for their name!
-        //example: book.checkOut(name) or book.checkIn() use the method
     }
-
-
 }

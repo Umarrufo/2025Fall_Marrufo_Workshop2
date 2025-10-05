@@ -70,8 +70,7 @@ public class Book {
     //check in and check out methods
     public void checkIn()
     {
-
-
+        this.isCheckedOut = false;
     }
 
     public void checkOut(String name)
