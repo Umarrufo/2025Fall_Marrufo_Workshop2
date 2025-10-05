@@ -37,7 +37,7 @@ public class Main
         //Menu to show the user options
         while (true)
         {
-            System.out.println("\nPleaser Enter you Choice");
+            System.out.println("\nPleaser Enter your Choice");
             System.out.println("1.) Show Available Books");
             System.out.println("2.) Show Checked Out Books");
             System.out.println("3.) Exit");
@@ -128,6 +128,7 @@ public class Main
                             System.out.println("\nInvalid Input: Please enter 1 or 2");
                             break;
                     }
+                    break;
                 default:
                     System.out.println("\nInvalid Input: Please enter 1, 2 or 3");
                     break;
