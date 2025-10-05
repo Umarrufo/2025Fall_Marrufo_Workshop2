@@ -35,98 +35,103 @@ public class Main
         Scanner scanner = new Scanner(System.in);
 
         //Menu to show the user options
-        while (true) {
-            System.out.println("Pleaser Enter you Choice");
+        while (true)
+        {
+            System.out.println("\nPleaser Enter you Choice");
             System.out.println("1.) Show Available Books");
             System.out.println("2.) Show Checked Out Books");
             System.out.println("3.) Exit");
             String userInput = scanner.nextLine();
 
             //Take in user input to show the menu options selected
-            switch (userInput) {
+            switch (userInput)
+            {
                 case "1":
                     //Print array of the books available
-                    for (Book catelog : books) {
-                        if (catelog.isCheckedOut() == false) {
-                            System.out.println("ID: " + catelog.getId() + " \t " +
-                                    "ISBN: " + catelog.getIsbn() + " \t " +
-                                    "Tite: " + catelog.getTitle() + " \t ");
+                    for (Book catalog : books) {
+                        if (catalog.isCheckedOut() == false) {
+                            System.out.println("ID: " + catalog.getId() + " \t " +
+                                    "ISBN: " + catalog.getIsbn() + " \t " +
+                                    "Title: " + catalog.getTitle() + " \t ");
                         }
                     }
                     //Ask user what they want to do next
-                    System.out.println("1.) Check Out Book\n" +
+                    System.out.println("\n1.) Check Out Book\n" +
                             "2.) Back");
                     String options1 = scanner.nextLine();
 
-                    switch (options1) {
+                    switch (options1)
+                    {
                         //Ask user for details to check out
                         case "1":
-                            System.out.println("What is the ID of the book you would like to check out?");
+                            System.out.println("\nWhat is the ID of the book you would like to check out?");
                             int idNumber = scanner.nextInt();
                             scanner.nextLine();
 
-                            System.out.println("What is your name?");
+                            System.out.println("\nWhat is your name?");
                             String checkedOutTo = scanner.nextLine();
 
-                            if (books[idNumber - 1].isCheckedOut() == false)
-                            {
+                            //Looks for book based off user input
+                            //If not checked out it will change checked out value to true
+                            //Save name in book array based off user input
+                            if (books[idNumber - 1].isCheckedOut() == false) {
                                 books[idNumber - 1].checkOut(checkedOutTo);
                             }
                             break;
+
                             //Take user back to main menu
                         case "2":
                             break;
+
                             //Tell user to re-input value if incorrect value input
                         default:
-                            System.out.println("Please type 1 or 2");
+                            System.out.println("\nInvalid Input: Please enter 1 or 2");
                             break;
-
                     }
                     break;
+
                 case "2":
                     //Show checked out books
-                    for (Book catelog : books) {
-                        if (catelog.isCheckedOut() == true) {
-                            System.out.println("ID: " + catelog.getId() + " \t " +
-                                    "ISBN: " + catelog.getIsbn() + " \t " +
-                                    "Title: " + catelog.getTitle() + " \t " +
-                                    "Checked Out To: " + catelog.getCheckedOutTo());
+                    for (Book catalog : books) {
+                        if (catalog.isCheckedOut() == true) {
+                            System.out.println("ID: " + catalog.getId() + " \t " +
+                                    "ISBN: " + catalog.getIsbn() + " \t " +
+                                    "Title: " + catalog.getTitle() + " \t " +
+                                    "Checked Out To: " + catalog.getCheckedOutTo());
                         }
                     }
                     //Ask user what they want to do next
-                    System.out.println("1.) Check In Book\n" +
+                    System.out.println("\n1.) Check In Book\n" +
                             "2.) Back");
                     String options2 = scanner.nextLine();
-                    //Ask user for into to check book in
-                    switch (options2) {
+
+                    switch (options2)
+                    {
+                        //Ask user for into to check book in
                         case "1":
-                            System.out.println("What is the ID of the book you would like to check in?");
+                            System.out.println("\nWhat is the ID of the book you would like to check in?");
                             int idNumber = scanner.nextInt();
                             scanner.nextLine();
-
                             books[idNumber -1].checkIn();
-
                             break;
 
                         case "2":
                             break;
-
 
                             //Exit program based of user input
                         case "3":
                             System.exit(0);
                             break;
+
                             //Tell user to re-input value if incorrect value input
                         default:
-                            System.out.println("Please type 1, 2 or 3");
+                            System.out.println("\nInvalid Input: Please enter 1 or 2");
                             break;
-
                     }
-
+                default:
+                    System.out.println("\nInvalid Input: Please enter 1, 2 or 3");
+                    break;
             }
-
         }
-
-
     }
 }
