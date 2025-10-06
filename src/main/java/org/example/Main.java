@@ -118,16 +118,15 @@ public class Main
                         case "2":
                             break;
 
-                            //Exit program based of user input
-                        case "3":
-                            System.exit(0);
-                            break;
-
                             //Tell user to re-input value if incorrect value input
                         default:
                             System.out.println("\nInvalid Input: Please enter 1 or 2");
                             break;
                     }
+                    break;
+                    //Exit program based of user input
+                case "3":
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("\nInvalid Input: Please enter 1, 2 or 3");
